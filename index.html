@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome Ohi</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background: #f9f9f9;
+      transition: all 0.5s ease;
+    }
+    .slide {
+      display: none;
+      text-align: center;
+    }
+    .slide.active {
+      display: block;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      background: #333;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .sorry-text {
+      font-size: 18px;
+      margin: 2px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div id="slide1" class="slide active">
+    <h1>Welcome Ohi 🖤</h1>
+    <button onclick="nextSlide(2)">Enter</button>
+  </div>
+
+  <div id="slide2" class="slide">
+    <h1>How are you?</h1>
+    <button onclick="nextSlide(3)">Well</button>
+  </div>
+
+  <div id="slide3" class="slide">
+    <div id="sorryContainer">
+      <h2 style="margin-bottom: 10px;">I’m sorry 💔❤️‍🩹</h2>
+      <div id="sorries"></div>
+    </div>
+    <button onclick="nextSlide(4)">Accepted</button>
+    <button onclick="nextSlide(4)">Not Rejected</button>
+  </div>
+
+  <div id="slide4" class="slide">
+    <h1>🎉 Congratulations Ohi! 🥳</h1>
+    <p>You made it to the end with love & forgiveness 💖</p>
+  </div>
+
+  <script>
+    function nextSlide(n) {
+      document.querySelectorAll('.slide').forEach(slide => slide.classList.remove('active'));
+      document.getElementById('slide' + n).classList.add('active');
+      if (n === 3) generateSorries();
+    }
+
+    function generateSorries() {
+      const container = document.getElementById('sorries');
+      if (container.innerHTML.trim() !== '') return; // prevent regenerating
+      for (let i = 0; i < 1000; i++) {
+        const span = document.createElement('span');
+        span.className = 'sorry-text';
+        span.textContent = "I'm sorry 💔❤️‍🩹 ";
+        container.appendChild(span);
+      }
+    }
+  </script>
+</body>
+</html>
